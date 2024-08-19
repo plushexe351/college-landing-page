@@ -9,5 +9,3 @@ This is a simple College Landing Page for my IT Lab Assignment
 3. Sections - Home, About Us, Our Campus, Our Legacy, Contact Us
 
 Feel free to clone and tweak it as you wish
-
-P.S - hamburger menu isnt implemented
