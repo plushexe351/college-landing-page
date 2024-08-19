@@ -1,6 +1,7 @@
 document.addEventListener("DOMContentLoaded", () => {
   const applyBtn = document.querySelector(".hero--call-to-action");
   const icons = document.querySelectorAll(".icons i");
+  const hamburg = document.querySelector(".hamburg");
 
   if (applyBtn) {
     applyBtn.addEventListener("click", () => {
@@ -111,4 +112,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
   let target = document.getElementById("legacy");
   observer.observe(target);
+
+  const navbar = document.querySelector(".header .nav");
+  hamburg.addEventListener("click", () => {
+    navbar.classList.toggle("active");
+  });
 });

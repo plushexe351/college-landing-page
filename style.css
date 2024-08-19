@@ -54,7 +54,7 @@ body {
   box-shadow: 0 0 1rem rgba(0, 0, 0, 0.15);
   width: 100vw;
   /* gap: 1rem; */
-  /* flex-wrap: wrap; */
+  flex-wrap: wrap;
   position: fixed;
   top: 0;
   left: 0;
@@ -89,6 +89,9 @@ body {
 
 .hamburg {
   display: none;
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
   padding: 1rem;
   justify-content: center;
   align-items: center;
@@ -103,8 +106,22 @@ body {
 }
 
 @media screen and (max-width: 700px) {
+  .header {
+    flex-direction: column;
+    background-color: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(1rem);
+    -webkit-backdrop-filter: blur(3rem);
+  }
   .nav {
-    display: none !important;
+    flex-direction: column;
+    height: 0;
+    transition: 0.2s ease;
+  }
+  .nav a:last-of-type {
+    margin-right: 0 !important;
+  }
+  .nav.active {
+    height: 100vh;
   }
   .hamburg {
     display: flex;

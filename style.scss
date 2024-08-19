@@ -51,7 +51,7 @@ body {
   box-shadow: 0 0 1rem rgba(0, 0, 0, 0.15);
   width: 100vw;
   /* gap: 1rem; */
-  /* flex-wrap: wrap; */
+  flex-wrap: wrap;
   position: fixed;
   top: 0;
   left: 0;
@@ -84,6 +84,9 @@ body {
 }
 .hamburg {
   display: none;
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
   padding: 1rem;
   justify-content: center;
   align-items: center;
@@ -96,9 +99,25 @@ body {
   background-color: black;
 }
 @media screen and (max-width: 700px) {
-  .nav {
-    display: none !important;
+  .header {
+    flex-direction: column;
+    background-color: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(1rem);
+    -webkit-backdrop-filter: blur(3rem);
+    // display: none !important;
   }
+  .nav {
+    flex-direction: column;
+    height: 0;
+    transition: 0.2s ease;
+    a:last-of-type {
+      margin-right: 0 !important;
+    }
+    &.active {
+      height: 100vh;
+    }
+  }
+
   .hamburg {
     display: flex;
   }
