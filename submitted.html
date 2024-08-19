@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fees Payment</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+      integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+  </head>
+  <body>
+    <section class="section-container">
+      <div class="hero">
+        <div class="header">
+          <div class="heading">
+            <img src="./assets/Logo-small.png" alt="" class="logo" />
+            <h1 class="header-title">Fees Payment</h1>
+          </div>
+          <div class="nav">
+            <a href="./index.html">Home</a
+            ><a href="./index.html#legacy">About Us</a
+            ><a href="./index.html#campus">Campus Life</a
+            ><a href="./index.html#footer">Contact Us</a>
+            <button class="btn--login">
+              <i class="fa-solid fa-circle-arrow-right"></i> Login
+            </button>
+          </div>
+        </div>
+
+        <div class="form-container">
+          <form action="./submitted.html" class="payment-form">
+            <p><i class="fa-solid fa-circle-check"></i>Application Submitted</p>
+            <h2>Fee Payment Details</h2>
+
+            <div class="linebreak"></div>
+            <input type="submit" value="Pay Now" id="submit" />
+            <p id="admission-fee">
+              Admission Fee <span class="fee">₹50,000/-</span>
+            </p>
+
+            <input
+              type="text"
+              name="firstname"
+              id="firstname"
+              placeholder="First Name"
+              required
+            />
+            <input
+              type="text"
+              name="middlename"
+              id="middlename"
+              placeholder="Middle Name"
+            />
+            <input
+              type="text"
+              name="lastname"
+              id="lastname"
+              placeholder="Last Name"
+              required
+            />
+            <input
+              type="number"
+              name="mobile-number"
+              id="mobile-number"
+              placeholder="Mobile Number"
+              required
+            />
+            <input
+              type="email"
+              name="email"
+              id="email"
+              placeholder="Email ID"
+              required
+            />
+            <input
+              type="text"
+              name="state"
+              id="state"
+              placeholder="State"
+              required
+            />
+            <input
+              type="text"
+              name="city"
+              id="city"
+              placeholder="City"
+              required
+            />
+            <input
+              type="text"
+              name="program"
+              id="program"
+              placeholder="Program"
+              required
+            />
+            <input
+              type="text"
+              name="course"
+              id="course"
+              placeholder="Course"
+              required
+            />
+            <div id="terms-and-conditions">
+              <input
+                type="checkbox"
+                name="accept-terms"
+                id="accept-terms"
+                required
+              />
+              <label for="accept-terms">I accept all T&Cs</label>
+            </div>
+            <input type="submit" value="Pay Now" id="submit" />
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+    <script>
+      function getQueryParams() {
+        const params = new URLSearchParams(window.location.search);
+        const data = {};
+        for (const [key, value] of params.entries()) {
+          data[key] = value;
+        }
+        return data;
+      }
+
+      function populateForm(data) {
+        for (const key in data) {
+          const input = document.querySelector(`#${key}`);
+          if (input) {
+            input.value = decodeURIComponent(data[key]);
+          }
+        }
+      }
+
+      function generateAdmitCard(data) {
+        const { jsPDF } = window.jspdf;
+
+        const doc = new jsPDF();
+
+        doc.setFontSize(16);
+        doc.text("Admit Card", 105, 20, null, null, "center");
+
+        doc.setFontSize(12);
+        doc.text(
+          `Name: ${data.firstname} ${data.middlename} ${data.lastname}`,
+          20,
+          40
+        );
+        doc.text(`Mobile Number: ${data["mobile-number"]}`, 20, 50);
+        doc.text(`Email: ${data.email}`, 20, 60);
+        doc.text(`State: ${data.state}`, 20, 70);
+        doc.text(`City: ${data.city}`, 20, 80);
+        doc.text(`Program: ${data.program}`, 20, 90);
+        doc.text(`Course: ${data.course}`, 20, 100);
+        doc.text(`Admission Fee: ₹50,000/-`, 20, 110);
+        doc.text(`Course Fee: ₹1,00,000/-`, 20, 120);
+
+        doc.save("AdmitCard.pdf");
+      }
+
+      document.addEventListener("DOMContentLoaded", () => {
+        const queryParams = getQueryParams();
+        populateForm(queryParams);
+
+        const submitButton = document.getElementById("submit");
+
+        submitButton.addEventListener("click", (event) => {
+          event.preventDefault();
+          generateAdmitCard(queryParams);
+        });
+      });
+    </script>
+  </body>
+</html>

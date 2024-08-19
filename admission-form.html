@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admission Form</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+      integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+  </head>
+  <body>
+    <section class="section-container">
+      <div class="header">
+        <div class="heading">
+          <img src="./assets/Logo-small.png" alt="" class="logo" />
+          <h1 class="header-title"></h1>
+        </div>
+        <div class="nav">
+          <a href="./index.html">Home</a
+          ><a href="./index.html#legacy">About Us</a
+          ><a href="./index.html#campus">Campus Life</a
+          ><a href="./index.html#footer">Contact Us</a>
+          <button class="btn--login">
+            <i class="fa-solid fa-circle-arrow-right"></i> Login
+          </button>
+        </div>
+        <div class="hamburg">
+          <div class="bar"></div>
+          <div class="bar"></div>
+          <div class="bar"></div>
+        </div>
+      </div>
+      <div class="hero">
+        <div class="form-container">
+          <form id="admission-form">
+            <h2>Admission Open 2024-2025</h2>
+            <div class="linebreak"></div>
+            <input
+              type="text"
+              name="firstname"
+              id="firstname"
+              placeholder="First Name"
+              required
+            />
+            <input
+              type="text"
+              name="middlename"
+              id="middlename"
+              placeholder="Middle Name"
+            />
+            <input
+              type="text"
+              name="lastname"
+              id="lastname"
+              placeholder="Last Name"
+              required
+            />
+            <input
+              type="number"
+              name="mobile-number"
+              id="mobile-number"
+              placeholder="Enter Mobile Number"
+              required
+            />
+            <input
+              type="email"
+              name="email"
+              id="email"
+              placeholder="Enter Email ID"
+              required
+            />
+            <input
+              type="text"
+              name="state"
+              id="state"
+              placeholder="Enter State"
+              required
+            />
+            <input
+              type="text"
+              name="city"
+              id="city"
+              placeholder="Enter City"
+              required
+            />
+            <input
+              type="text"
+              name="program"
+              id="program"
+              placeholder="Enter Program"
+              required
+            />
+            <input
+              type="text"
+              name="course"
+              id="course"
+              placeholder="Enter Course"
+              required
+            />
+            <input type="submit" value="Submit" id="submit" />
+          </form>
+        </div>
+      </div>
+    </section>
+    <script>
+      document
+        .getElementById("admission-form")
+        .addEventListener("submit", function (event) {
+          event.preventDefault();
+          const formData = new FormData(event.target);
+          const queryString = new URLSearchParams(formData).toString();
+          window.location.href = `submitted.html?${queryString}`;
+        });
+    </script>
+  </body>
+</html>
