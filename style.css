@@ -169,6 +169,7 @@ body {
 }
 
 .logo {
+  cursor: pointer;
   height: 70px;
   border: 1px solid rgba(0, 0, 0, 0.15);
 }
@@ -1306,9 +1307,6 @@ form > h2 {
   align-items: center;
 }
 
-i {
-  margin-right: 0.5rem;
-}
 i.fa-circle-check {
   color: rgb(0, 170, 0);
 }

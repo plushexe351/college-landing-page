@@ -2,6 +2,13 @@ document.addEventListener("DOMContentLoaded", () => {
   const applyBtn = document.querySelector(".hero--call-to-action");
   const icons = document.querySelectorAll(".icons i");
   const hamburg = document.querySelector(".hamburg");
+  const logos = document.querySelectorAll(".logo");
+
+  logos.forEach((logo) => {
+    logo.addEventListener("click", () => {
+      window.location.href = "index.html#home";
+    });
+  });
 
   if (applyBtn) {
     applyBtn.addEventListener("click", () => {
