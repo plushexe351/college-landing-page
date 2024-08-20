@@ -114,7 +114,6 @@
               />
               <label for="accept-terms">I accept all T&Cs</label>
             </div>
-            <input type="submit" value="Pay Now" id="submit" />
           </form>
         </div>
       </div>
@@ -173,9 +172,10 @@
 
         const submitButton = document.getElementById("submit");
 
-        submitButton.addEventListener("click", (event) => {
+        submitButton.addEventListener("click", async (event) => {
           event.preventDefault();
-          generateAdmitCard(queryParams);
+          await generateAdmitCard(queryParams);
+          window.location.href = "admit-card-generated.html";
         });
       });
     </script>
